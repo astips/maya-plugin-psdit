@@ -1,8 +1,15 @@
 # maya-plugin-psdit
 
+---
+![Example UI](docs/images/psdit.gif)
+
+Maya plugin used to get an inverted shape.  
+
+---
+
 #### USAGE :
 
-1. Load plugins "psditNode" & "psditCmd".
+1. Load plugins "psdit".
 2. Pose your skinned model in the pose that you want to correct.
 3. Duplicate the mesh and sculpt in your fixes. 
 4. Select the original skinned model, shift select the corrected model and run:
@@ -10,7 +17,7 @@
 
     **run cmd without args :**
 
-    ```
+    ```python
     import maya.cmds as cmds    
     cmds.psditCmd()    
     ```
@@ -20,7 +27,7 @@
     **for some reason, you don't want to select the two models,  
     you can run cmd with args :**
 
-    ```
+    ```python
     import maya.cmds as cmds    
     cmds.psditCmd(b="base_model_name", 
                   c="corrective_model_name", 
@@ -30,8 +37,9 @@
     
     
     
-    **you can type psditCmd cmd with -h flag to see the help info**
-    ```
+    **you can type psditCmd cmd with -h flag to see the help info**  
+
+    ```python
     cmds.psditCmd(h=True)
 
     psditCmd Help : 
