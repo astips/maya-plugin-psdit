@@ -7,7 +7,7 @@ Maya plugin used to get an inverted shape.
 
 ---
 
-#### USAGE :
+#### USAGE
 
 1. Load plugins "psdit".
 2. Pose your skinned model in the pose that you want to correct.
@@ -43,13 +43,22 @@ Maya plugin used to get an inverted shape.
     cmds.psditCmd(h=True)
 
     psditCmd Help : 
-        -b  --base   < string : base object name >
-        -c  --corrective   < string : correctived object name >
-        -n  --name   < string : inverter object name >
-        -d  --deformer   < bool : if keep psditNode deformer > 
+        -b  -base   < string : base object name >
+        -c  -corrective   < string : correctived object name >
+        -n  -name   < string : inverter object name >
+        -d  -deformer   < bool : if keep psditNode deformer > 
     ```
 
 
 An inverted shape will be generated which you can then apply as a front of chain blendShape target.  
 The generated shape will have a live deformer affecting it so edits you make on your corrected mesh  
 will be inverted through the deformer.
+
+
+#### SPEED TEST 
+
+* 25000  Vertexes  :  0.16 second  
+
+* 50000  Vertexes  :  0.26 second  
+
+* 100000 Vertexes  :  0.48 second  
