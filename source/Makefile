@@ -32,13 +32,15 @@ endif
 # Variable definitions
 #
 
-SRCDIR := $(TOP)/psdit
-DSTDIR := $(TOP)/psdit
+PLUGIN_NAME := psdit
 
-psdit_SOURCES  := $(TOP)/psdit/psditCmd.cpp 
-psdit_OBJECTS  := $(TOP)/psdit/psditCmd.o 
-psdit_PLUGIN   := $(DSTDIR)/psditCmd.$(EXT)
-psdit_MAKEFILE := $(DSTDIR)/Makefile
+SRCDIR := $(TOP)/psdit
+DSTDIR := $(TOP)/psdit/build
+
+$(PLUGIN_NAME)_SOURCES  := $(TOP)/psdit/psditNode.cpp $(TOP)/psdit/psditCmd.cpp $(TOP)/psdit/pluginMain.cpp
+$(PLUGIN_NAME)_OBJECTS  := $(TOP)/psdit/psditNode.o $(TOP)/psdit/psditCmd.o $(TOP)/psdit/pluginMain.o
+$(PLUGIN_NAME)_PLUGIN   := $(DSTDIR)/$(PLUGIN_NAME).$(EXT)
+$(PLUGIN_NAME)_MAKEFILE := $(DSTDIR)/Makefile
 
 #
 # Include the optional per-plugin Makefile.inc
@@ -55,38 +57,37 @@ psdit_MAKEFILE := $(DSTDIR)/Makefile
 # Set target specific flags.
 #
 
-$(psdit_OBJECTS): CFLAGS   := $(CFLAGS)   $(psdit_EXTRA_CFLAGS)
-$(psdit_OBJECTS): C++FLAGS := $(C++FLAGS) $(psdit_EXTRA_C++FLAGS)
-$(psdit_OBJECTS): INCLUDES := $(INCLUDES) $(psdit_EXTRA_INCLUDES)
+$($(PLUGIN_NAME)_OBJECTS): CFLAGS   := $(CFLAGS)   $($(PLUGIN_NAME)_EXTRA_CFLAGS)
+$($(PLUGIN_NAME)_OBJECTS): C++FLAGS := $(C++FLAGS) $($(PLUGIN_NAME)_EXTRA_C++FLAGS) -DNDEBUG -msse3
+$($(PLUGIN_NAME)_OBJECTS): INCLUDES := $(INCLUDES) $($(PLUGIN_NAME)_EXTRA_INCLUDES) -I../nlib
 
-depend_psdit:     INCLUDES := $(INCLUDES) $(psdit_EXTRA_INCLUDES)
+depend_$(PLUGIN_NAME):     INCLUDES := $(INCLUDES) $($(PLUGIN_NAME)_EXTRA_INCLUDES)
 
-$(psdit_PLUGIN):  LFLAGS   := $(LFLAGS) $(psdit_EXTRA_LFLAGS) 
-$(psdit_PLUGIN):  LIBS     := $(LIBS)   -lOpenMaya -lOpenMayaAnim -lFoundation -lclew $(psdit_EXTRA_LIBS) 
+$($(PLUGIN_NAME)_PLUGIN):  LFLAGS   := $(LFLAGS) $($(PLUGIN_NAME)_EXTRA_LFLAGS) 
+$($(PLUGIN_NAME)_PLUGIN):  LIBS     := $(LIBS)   -lOpenMaya -lOpenMayaAnim -lFoundation -lclew $($(PLUGIN_NAME)_EXTRA_LIBS) 
 
 #
 # Rules definitions
 #
 
-.PHONY: depend_psdit clean_psdit Clean_psdit
+.PHONY: depend_$(PLUGIN_NAME) clean_$(PLUGIN_NAME) Clean_$(PLUGIN_NAME)
 
 
-$(psdit_PLUGIN): $(psdit_OBJECTS) 
+$($(PLUGIN_NAME)_PLUGIN): $($(PLUGIN_NAME)_OBJECTS) 
 	-rm -f $@
 	$(LD) -o $@ $(LFLAGS) $^ $(LIBS)
 
-depend_psdit :
-	makedepend $(INCLUDES) $(MDFLAGS) -f$(DSTDIR)/Makefile $(psdit_SOURCES)
+depend_$(PLUGIN_NAME) :
+	makedepend $(INCLUDES) $(MDFLAGS) -f$(DSTDIR)/Makefile $($(PLUGIN_NAME)_SOURCES)
 
-clean_psdit:
-	-rm -f $(psdit_OBJECTS)
+clean_$(PLUGIN_NAME):
+	-rm -f $($(PLUGIN_NAME)_OBJECTS)
 
-Clean_psdit:
-	-rm -f $(psdit_MAKEFILE).bak $(psdit_OBJECTS) $(psdit_PLUGIN)
+Clean_$(PLUGIN_NAME):
+	-rm -f $($(PLUGIN_NAME)_MAKEFILE).bak $($(PLUGIN_NAME)_OBJECTS) $($(PLUGIN_NAME)_PLUGIN)
 
 
-plugins: $(psdit_PLUGIN)
-depend:	 depend_psdit
-clean:	 clean_psdit
-Clean:	 Clean_psdit
-
+plugins: $($(PLUGIN_NAME)_PLUGIN)
+depend:	 depend_$(PLUGIN_NAME)
+clean:	 clean_$(PLUGIN_NAME)
+Clean:	 Clean_$(PLUGIN_NAME)

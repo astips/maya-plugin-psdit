@@ -1,3 +1,11 @@
+/*
+
+Author  :   astips
+
+Github  :   https://github.com/astips
+
+*/
+
 #ifndef _PSDIT_CMD
 #define _PSDIT_CMD
 
@@ -6,7 +14,6 @@
 #include <maya/MGlobal.h>
 #include <maya/MString.h>
 #include <maya/MPxCommand.h>
-#include <maya/MFnPlugin.h>
 #include <maya/MArgList.h>
 #include <maya/MArgDatabase.h>
 #include <maya/MSelectionList.h>

@@ -14,9 +14,9 @@
     import maya.cmds as cmds    
     cmds.psditCmd()    
     ```
-
-
-
+    
+    
+    
     **for some reason, you don't want to select the two models,  
     you can run cmd with args :**
 
@@ -29,11 +29,11 @@
     ```
     
     
-
+    
     **you can type psditCmd cmd with -h flag to see the help info**
     ```
     cmds.psditCmd(h=True)
-    
+
     psditCmd Help : 
         -b  --base   < string : base object name >
         -c  --corrective   < string : correctived object name >

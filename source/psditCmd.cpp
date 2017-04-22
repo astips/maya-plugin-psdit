@@ -1,3 +1,11 @@
+/*
+
+Author  :   astips
+
+Github  :   https://github.com/astips
+
+*/
+
 #include "psditCmd.h"
 using namespace std;
 
@@ -356,21 +364,21 @@ void PsdItCmd::setPoints( const MString& name, MPointArray& points )
 
 
 
-MStatus initializePlugin(MObject obj)
-{
-    MStatus   status;
-    MFnPlugin plugin( obj, "virustyle", "1.0", "Any" );
-    status = plugin.registerCommand(PSDIT_CMD, 
-                                    PsdItCmd::creator, 
-                                    PsdItCmd::newSyntax);
-    return status;
-}
+// MStatus initializePlugin(MObject obj)
+// {
+//     MStatus   status;
+//     MFnPlugin plugin( obj, "astips", "1.0", "Any" );
+//     status = plugin.registerCommand(PSDIT_CMD, 
+//                                     PsdItCmd::creator, 
+//                                     PsdItCmd::newSyntax);
+//     return status;
+// }
 
 
-MStatus uninitializePlugin( MObject obj )
-{
-    MStatus   status;
-    MFnPlugin plugin( obj );
-    status = plugin.deregisterCommand( PSDIT_CMD );
-    return status;
-}
+// MStatus uninitializePlugin( MObject obj )
+// {
+//     MStatus   status;
+//     MFnPlugin plugin( obj );
+//     status = plugin.deregisterCommand( PSDIT_CMD );
+//     return status;
+// }

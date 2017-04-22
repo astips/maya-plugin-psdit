@@ -1,3 +1,11 @@
+/*
+
+Author  :   astips
+
+Github  :   https://github.com/astips
+
+*/
+
 #include "psditNode.h"
 
 using namespace std;
@@ -104,24 +112,24 @@ MStatus PsdItNode::deform(MDataBlock& block,
 }
 
 
-MStatus initializePlugin(MObject obj)
-{
-    MStatus   status;
-    MFnPlugin plugin(obj, "virustyle", "1.0", "Any");
+// MStatus initializePlugin(MObject obj)
+// {
+//     MStatus   status;
+//     MFnPlugin plugin(obj, "astips", "1.0", "Any");
 
-    status = plugin.registerNode(PSDIT_NODE, 
-                                 PsdItNode::id, 
-                                 PsdItNode::creator, 
-                                 PsdItNode::initialize, 
-                                 MPxNode::kDeformerNode);
-    return status;
-}
+//     status = plugin.registerNode(PSDIT_NODE, 
+//                                  PsdItNode::id, 
+//                                  PsdItNode::creator, 
+//                                  PsdItNode::initialize, 
+//                                  MPxNode::kDeformerNode);
+//     return status;
+// }
 
 
-MStatus uninitializePlugin(MObject obj)
-{
-    MStatus   status;
-    MFnPlugin plugin(obj);
-    status = plugin.deregisterNode(PsdItNode::id);
-    return status;
-}
+// MStatus uninitializePlugin(MObject obj)
+// {
+//     MStatus   status;
+//     MFnPlugin plugin(obj);
+//     status = plugin.deregisterNode(PsdItNode::id);
+//     return status;
+// }

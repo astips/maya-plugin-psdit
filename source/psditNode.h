@@ -1,3 +1,11 @@
+/*
+
+Author  :   astips
+
+Github  :   https://github.com/astips
+
+*/
+
 #ifndef _PSDIT_NODE
 #define _PSDIT_NODE
 
@@ -9,7 +17,6 @@
 #include <maya/MPxDeformerNode.h>
 #include <maya/MDataBlock.h>
 #include <maya/MItGeometry.h>
-#include <maya/MFnPlugin.h>
 #include <maya/MObject.h>
 #include <maya/MFnNumericAttribute.h>
 #include <maya/MFnMatrixAttribute.h>
