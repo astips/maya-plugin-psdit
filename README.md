@@ -28,7 +28,7 @@ Maya plugin used to get an inverted shape.
     
     
     **for some reason, you don't want to select the two models,  
-    you can run cmd with args :**
+    you can run cmd with args like this :**
 
     ```python
     import maya.cmds as cmds    
@@ -49,7 +49,7 @@ Maya plugin used to get an inverted shape.
         -b  -base   < string : base object name >
         -c  -corrective   < string : correctived object name >
         -n  -name   < string : inverter object name >
-        -d  -deformer   < bool : if keep psditNode deformer > 
+        -d  -deformer   < bool : whether keep psditNode deformer > 
     ```
 
 
