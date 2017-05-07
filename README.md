@@ -5,6 +5,9 @@
 
 Maya plugin used to get an inverted shape.  
 
+#### MAYA NODE ID
+* Node ID : 0x80000
+
 ---
 
 #### USAGE
